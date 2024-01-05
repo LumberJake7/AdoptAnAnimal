@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Pet</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body,
+      html {
+        background-image: url("https://t3.ftcdn.net/jpg/02/98/20/18/360_F_298201821_e90YxH0f6FBwOvcKhynlwF8sNYxlCMsg.jpg");
+        height: 100%;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .col-form-label {
+        padding-top: 7px;
+      }
+      .petForm {
+        border-radius: 15px;
+        background-color: aliceblue;
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add Pet</h1>
+    <div class="container">
+      <form method="POST" class="petForm">
+        {{ form.hidden_tag() }} {% for field in form if field.widget.input_type
+        != 'hidden' %}
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{ field.label }}</label>
+          <div class="col-sm-10">
+            {{ field(class="form-control") }} {% for err in field.errors %}
+            <small class="form-text text-danger">{{ err }}</small>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/" class="btn btn-danger"> Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

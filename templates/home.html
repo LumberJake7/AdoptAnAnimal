@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage</title>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <style>
+    body,
+    html {
+      background-image: url("https://t3.ftcdn.net/jpg/02/98/20/18/360_F_298201821_e90YxH0f6FBwOvcKhynlwF8sNYxlCMsg.jpg");
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      background-color: rgb(191, 213, 233);
+      border-radius: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 80%;
+      height: calc(66vh - 40px);
+      overflow-y: auto;
+      margin: auto;
+      padding: 20px;
+    }
+    .pet-image {
+      border: 1px solid #8f8d8d;
+      padding: 1px;
+      width: 200px;
+    }
+
+    .pet-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .pet-info {
+      display: inline;
+      flex-grow: 1;
+      padding-left: 10px;
+    }
+    .buttons {
+      text-align: center;
+    }
+    .all_pet {
+      width: 500px;
+      height: auto;
+      border: 1px solid #000000;
+    }
+  </style>
+
+  <body>
+    <h1>Adopt an Animal</h1>
+
+    <div class="container">
+      {% for pet in pets%}
+      <div class="all_pet">
+        <div class="pet-image">
+          <img src="{{pet.photo_url}}" alt="{{pet.name}}" />
+        </div>
+        <div class="pet-info">
+          <p>Name: {{pet.name}}</p>
+          <p>Species:{{pet.species}}</p>
+          <p>Age: {{pet.age}}</p>
+          <p>Notes: {{pet.notes}}</p>
+          <p><strong>Available: {{pet.available}}</strong></p>
+          <a class="btn btn-sm btn-info" href="pet/{{pet.id}}/edit">Edit</a>
+        </div>
+        <br />
+      </div>
+      {%endfor%}
+    </div>
+    <div class="buttons">
+      <a href="/add_pet" class="btn btn-success">Add Pet</a>
+    </div>
+  </body>
+</html>
